@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Assets/Script/LocationSelectionManager.cs" />
     <Compile Include="Assets/Script/TypewriterEffect.cs" />
+    <Compile Include="Assets/Script/BusinessForm.cs" />
     <Compile Include="Assets/Script/SceneController.cs" />
     <Compile Include="Assets/Script/MapPinHover.cs" />
     <Compile Include="Assets/Script/CategorySelectionManager.cs" />
