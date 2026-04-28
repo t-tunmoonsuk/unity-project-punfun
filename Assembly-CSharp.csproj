@@ -54,6 +54,8 @@
     <Compile Include="Assets/Script/LocationSelectionManager.cs" />
     <Compile Include="Assets/Script/TypewriterEffect.cs" />
     <Compile Include="Assets/Script/BusinessForm.cs" />
+    <Compile Include="Assets/Script/SummaryEnd.cs" />
+    <Compile Include="Assets/Script/FromNewB.cs" />
     <Compile Include="Assets/Script/SceneController.cs" />
     <Compile Include="Assets/Script/MapPinHover.cs" />
     <Compile Include="Assets/Script/CategorySelectionManager.cs" />

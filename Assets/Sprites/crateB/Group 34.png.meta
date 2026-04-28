@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 020d4635bdcfa4735838776b4f92552b
+guid: 8778205e02556440bb22e03f117fd335
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6726930071467658613
-    second: cratebussssss_0
+      213: 1545270241482792381
+    second: Group 34_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cratebussssss_0
+      name: Group 34_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 375
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b82f645adb425a2a0800000000000000
-      internalID: -6726930071467658613
+      spriteID: dbd5091f817e17510800000000000000
+      internalID: 1545270241482792381
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cratebussssss_0: -6726930071467658613
+      Group 34_0: 1545270241482792381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
