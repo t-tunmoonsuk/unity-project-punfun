@@ -5,3 +5,5 @@ Build/
 Builds/
 Logs/
 UserSettings/
+.DS_Store
+**/.DS_Store

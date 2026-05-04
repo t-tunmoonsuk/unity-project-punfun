@@ -3548,8 +3548,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1133, y: 404}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 460, y: 555}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464837151
 MonoBehaviour:
@@ -5674,10 +5674,10 @@ MonoBehaviour:
   seasoningInput: {fileID: 297764919}
   mainMenuDropdown: {fileID: 0}
   defaultDropdownIndex: 1
-  baseRent: 30000
+  baseRent: 20000
   baseWater: 2000
-  baseElectric: 10000
-  salaryPerPerson: 12000
+  baseElectric: 5000
+  salaryPerPerson: 8000
 --- !u!1 &962349620
 GameObject:
   m_ObjectHideFlags: 0

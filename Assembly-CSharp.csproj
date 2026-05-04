@@ -58,6 +58,8 @@
     <Compile Include="Assets/Script/FromNewB.cs" />
     <Compile Include="Assets/Script/SceneController.cs" />
     <Compile Include="Assets/Script/MapPinHover.cs" />
+    <Compile Include="Assets/Script/PlayGame2UmbrellaDropZone.cs" />
+    <Compile Include="Assets/Script/PlayGame2DraggableCharacter.cs" />
     <Compile Include="Assets/Script/CategorySelectionManager.cs" />
   </ItemGroup>
   <ItemGroup>

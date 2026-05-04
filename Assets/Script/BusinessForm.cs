@@ -1,13 +1,10 @@
 using UnityEngine;
-using TMPro; // ใช้สำหรับจัดการ UI ของ TextMeshPro (InputField, Dropdown)
-using System.IO; // ใช้สำหรับจัดการระบบไฟล์ (อ่าน/เขียนไฟล์ JSON)
+using TMPro; // TextMeshPro (InputField, Dropdown)
+using System.IO; // (อ่าน/เขียนไฟล์ JSON)
 
-// 1. สร้างโครงสร้างข้อมูลสำหรับ BusinessForm
-// [System.Serializable] ทำให้ Unity สามารถแปลงคลาสนี้เป็น JSON หรือดูและตั้งค่าใน Inspector ได้
 [System.Serializable]
 public class BusinessData
 {
-    // ตัวแปรต่างๆ สำหรับเก็บค่าจากหน้า UI เพื่อเตรียมนำไปเซฟลงไฟล์
     public int rent;             // ค่าเช่า
     public int water;            // ค่าน้ำ
     public int electric;         // ค่าไฟ
@@ -22,14 +19,12 @@ public class BusinessData
     
     public int selectedMenuOption; // เก็บค่า Index ของ Dropdown ว่าผู้เล่นเลือกตัวเลือกไหนไว้ (0, 1, 2, ...)
     
-    public string saveTimestamp;   // เก็บวันและเวลาที่กดเซฟข้อมูลเอาไว้ดูย้อนหลัง
+    public string saveTimestamp;   // เก็บวันและเวลาที่กดเซฟ
 }
 
 public class BusinessForm : MonoBehaviour
 {
-    // [Header(...)] ช่วยจัดหมวดหมู่ตัวแปรในหน้าต่าง Inspector ของ Unity ให้เป็นระเบียบดูง่ายขึ้น
     [Header("UI Inputs")]
-    // ตัวแปรสำหรับรับ Component ที่เป็นช่องกรอกข้อความ (InputField) ในหน้า UI ของเรา
     [SerializeField] private TMP_InputField rentInput;
     [SerializeField] private TMP_InputField waterInput;
     [SerializeField] private TMP_InputField electricInput;
@@ -48,47 +43,45 @@ public class BusinessForm : MonoBehaviour
     [SerializeField] private int defaultDropdownIndex = 1;  // กำหนดว่าจะให้ Dropdown เริ่มต้นที่ตัวเลือกไหน (0 = อันแรก, 1 = อันที่สอง)
 
     [Header("Default Costs Settings")]
-    // ค่าเริ่มต้นพื้นฐานของธุรกิจ ที่เรากำหนดไว้ล่วงหน้า
-    [SerializeField] private int baseRent = 30000;         // ค่าเช่าพื้นฐาน
-    [SerializeField] private int baseWater = 2000;         // ค่าน้ำพื้นฐาน
-    [SerializeField] private int baseElectric = 10000;     // ค่าไฟพื้นฐาน
-    [SerializeField] private int salaryPerPerson = 12000;   // เงินเดือนพนักงาน 1 คน
+    [SerializeField] private int baseRent = 20000;         // ค่าเช่า
+    [SerializeField] private int baseWater = 2000;         // ค่าน้ำ
+    [SerializeField] private int baseElectric = 5000;     // ค่าไฟ
+    [SerializeField] private int salaryPerPerson = 8000;   // เงินเดือนพนักงาน 1 คน
 
-    // ตัวแปรเช็คว่าโปรแกรมกำลังจัดฟอร์แมตตัวเลขอยู่หรือไม่ (ป้องกันบั๊กการจัดฟอร์แมตชนกันจนลูปค้าง)
     private bool isFormatting = false;
 
     private void Start()
     {
-        // --- ส่วนจัดการ Dropdown ---
         if (mainMenuDropdown != null)
         {
-            // ตั้งค่าให้ Dropdown เลือกตัวเลือกตาม defaultDropdownIndex ที่เราตั้งไว้ตอนเริ่มเกม
             mainMenuDropdown.value = defaultDropdownIndex;
-            // สั่งให้อัปเดตข้อความบน UI ให้ตรงกับค่าที่เพิ่งเปลี่ยนไป
             mainMenuDropdown.RefreshShownValue(); 
         }
 
-        // --- ส่วนจัดการ InputField แบบอ่านอย่างเดียว (ผู้เล่นกดพิมพ์แก้ไม่ได้) ---
         // เซ็ต readOnly เป็น true ให้แสดงผลได้อย่างเดียว
-        if (rentInput != null) rentInput.readOnly = true;
-        if (waterInput != null) waterInput.readOnly = true;
-        if (electricInput != null) electricInput.readOnly = true;
-        if (salaryInput != null) salaryInput.readOnly = true;
+        if (rentInput != null) 
+            rentInput.readOnly = true;
+        if (waterInput != null) 
+            waterInput.readOnly = true;
+        if (electricInput != null) 
+            electricInput.readOnly = true;
+        if (salaryInput != null) 
+            salaryInput.readOnly = true;
 
-        // นำค่าเริ่มต้น (base) ที่ตั้งไว้มาแสดงในช่อง พร้อมจัดฟอร์แมตใส่ลูกน้ำ ("N0") 
-        if (rentInput != null) rentInput.text = baseRent.ToString("N0");
-        if (waterInput != null) waterInput.text = baseWater.ToString("N0");
-        if (electricInput != null) electricInput.text = baseElectric.ToString("N0");
+        // นำค่าเริ่มต้น (base) ที่ตั้งไว้มาแสดงในช่อง พร้อมจัดฟอร์แมตใส่ลูกน้ำ
+        if (rentInput != null) 
+            rentInput.text = baseRent.ToString("N0");
+        if (waterInput != null) 
+            waterInput.text = baseWater.ToString("N0");
+        if (electricInput != null) 
+            electricInput.text = baseElectric.ToString("N0");
 
-        // สร้าง Event: ถ้าช่อง "จำนวนพนักงาน" มีการเปลี่ยนแปลงตัวเลข ให้ไปเรียกฟังก์ชัน UpdateSalary ทันที
         if (employeeCountInput != null)
         {
             employeeCountInput.onValueChanged.AddListener(UpdateSalary);
         }
 
-        // --- ส่วนตั้งค่าช่องกรอกตัวเลขแบบใส่ลูกน้ำอัตโนมัติ ---
-        // เรียกฟังก์ชัน SetupAutoCommaInputField เพื่อตั้งค่าช่องต่างๆ ให้พิมพ์แล้วมีลูกน้ำคั่นหลักพัน
-        SetupAutoCommaInputField(employeeCountInput, "1"); // พนักงานค่าเริ่มต้นที่ 1 คน
+        SetupAutoCommaInputField(employeeCountInput, "1");
         SetupAutoCommaInputField(sellPriceInput, "60");
         SetupAutoCommaInputField(meatInput, "10");
         SetupAutoCommaInputField(fruitInput, "10");
@@ -96,20 +89,16 @@ public class BusinessForm : MonoBehaviour
         SetupAutoCommaInputField(vegInput, "10");
         SetupAutoCommaInputField(seasoningInput, "10");
 
-        // คำนวณเงินเดือนรวมครั้งแรกสุดตอนเปิดแอปฯ ขึ้นมา
         if (employeeCountInput != null)
         {
             UpdateSalary(employeeCountInput.text);
         }
     }
-
-    // ฟังก์ชันสำหรับคำนวณ "เงินเดือนรวม" (จำนวนพนักงาน * เงินเดือนต่อคน)
     private void UpdateSalary(string countText)
     {
         int employeeCount = ParseToInt(countText); // ดึงข้อความในช่องมาแปลงเป็นตัวเลข
-        int totalSalary = employeeCount * salaryPerPerson; // คำนวณยอดรวม
+        int totalSalary = employeeCount * salaryPerPerson;
 
-        // อัปเดตยอดรวมไปแสดงที่ช่อง salaryInput พร้อมใส่ลูกน้ำ
         if (salaryInput != null)
         {
             salaryInput.text = totalSalary.ToString("N0");
@@ -187,11 +176,8 @@ public class BusinessForm : MonoBehaviour
         }
     }
 
-    // --- ส่วนการบันทึกข้อมูลเป็นไฟล์ JSON (ใช้ผูกกับปุ่ม Save บน UI ของคุณ) ---
     public void OnSubmitForm()
     {
-        // 2. สร้างก้อนข้อมูลขึ้นมา 1 ชุด แล้วไล่ดึงค่าจากช่อง Input ต่างๆ มายัดใส่ 
-        // (ข้อความจะต้องผ่าน ParseToInt เพื่อลบลูกน้ำออกก่อน ไม่งั้นจะเซฟเป็นตัวเลขไม่ได้)
         BusinessData data = new BusinessData();
         data.rent = ParseToInt(rentInput.text);
         data.water = ParseToInt(waterInput.text);
@@ -205,13 +191,11 @@ public class BusinessForm : MonoBehaviour
         data.veg = ParseToInt(vegInput.text);
         data.seasoning = ParseToInt(seasoningInput.text);
         
-        // บันทึกค่า Dropdown ว่าผู้เล่นกำลังเลือก Option ไหนอยู่เป็นตัวเลข
         if (mainMenuDropdown != null)
         {
             data.selectedMenuOption = mainMenuDropdown.value;
         }
         
-        // บันทึกเวลาปัจจุบันที่กดเซฟ
         data.saveTimestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
         // 3. แปลงก้อนข้อมูลให้กลายเป็นฟอร์แมต JSON (คำว่า true คือให้จัดเรียงบรรทัด JSON ให้อ่านง่ายๆ)
@@ -221,7 +205,6 @@ public class BusinessForm : MonoBehaviour
         string savePath = Application.persistentDataPath + "/BusinessDataLog.json";
         File.WriteAllText(savePath, json);
 
-        // แสดงผลในหน้าต่าง Console ของ Unity ว่าเซฟเสร็จแล้ว และปริ้นท์หน้าตาของ JSON ออกมาดู
         Debug.Log("บันทึกข้อมูลธุรกิจสำเร็จที่: " + savePath);
         Debug.Log("ข้อมูลที่บันทึก:\n" + json);
     }
