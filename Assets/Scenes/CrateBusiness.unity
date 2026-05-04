@@ -4370,6 +4370,7 @@ GameObject:
   - component: {fileID: 678740593}
   - component: {fileID: 678740592}
   - component: {fileID: 678740591}
+  - component: {fileID: 678740595}
   m_Layer: 5
   m_Name: "Button(\u0E16\u0E31\u0E14\u0E44\u0E1B)"
   m_TagString: Untagged
@@ -4445,6 +4446,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 678740595}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GamePlayRestaurant
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &678740592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4502,6 +4515,18 @@ RectTransform:
   m_AnchoredPosition: {x: 975, y: -571}
   m_SizeDelta: {x: 364.44, y: 118.48}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &678740595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678740590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7650dd67db4f34857914dfc79af860e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneController
 --- !u!1 &678817851
 GameObject:
   m_ObjectHideFlags: 0
