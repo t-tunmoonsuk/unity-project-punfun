@@ -3608,7 +3608,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214341130}
-  - component: {fileID: 1214341131}
   m_Layer: 5
   m_Name: SequenceManager
   m_TagString: Untagged
@@ -3635,25 +3634,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1214341131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214341129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15db1506bdb984a5d997b6fc57dc531c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomerWalk
-  customerObj: {fileID: 0}
-  dialogUI: {fileID: 0}
-  startX: 0
-  targetX: 0
-  moveDuration: 1
-  sideSprite: {fileID: 1652678336342406557, guid: 071b5309eda51462390d5e78d3f6877b, type: 3}
-  frontSprite: {fileID: 1964443962164782362, guid: 2e719b3d634a94c7fa73b350e6fc1bb1, type: 3}
 --- !u!1 &1234309754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5382,6 +5362,7 @@ GameObject:
   - component: {fileID: 1844207247}
   - component: {fileID: 1844207248}
   - component: {fileID: 1844207249}
+  - component: {fileID: 1844207250}
   m_Layer: 5
   m_Name: DialogUI 2
   m_TagString: Untagged
@@ -5440,6 +5421,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1844207250}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: LoadNextScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: end
+          m_BoolArgument: 0
+        m_CallState: 2
   putissTypingSpeed: 0.02
   maxCharacterFadeDuration: 0.2
   windowFadeSpeed: 0.3
@@ -5469,6 +5462,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1844207250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844207246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7650dd67db4f34857914dfc79af860e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneController
 --- !u!1 &1975275407
 GameObject:
   m_ObjectHideFlags: 0
